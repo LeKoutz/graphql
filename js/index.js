@@ -3,4 +3,10 @@ import { sendQuery } from './api.js'
 
 renderLoginForm()
 loginHandler()
-sendQuery('{ result { grade user { login } } }').then(data => console.log(data))
+sendQuery(`{
+  transaction(where: { type: { _eq: "xp" } }) {
+    amount
+    createdAt
+    path
+  }
+}`).then(data => console.log(data))
