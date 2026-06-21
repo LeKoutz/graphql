@@ -43,3 +43,18 @@ function handleLoginSubmit(event) {
 function resetLoginForm() {
   document.getElementById('login-form').reset();
 }
+
+async function requestJWT(identifier, password) {
+    const credentials = btoa(`${identifier}:${password}`);
+    const response = await fetch('url', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Basic ${credentials}`
+        }
+    })
+    if (!response.ok) {
+        return
+    }
+    const token = await response.json
+    return token
+}
