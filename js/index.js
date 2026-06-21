@@ -3,4 +3,4 @@ import { sendQuery } from './api.js'
 
 renderLoginForm()
 loginHandler()
-sendQuery('{ user { id } }').then(data => console.log(data))
+sendQuery('{ result { grade user { login } } }').then(data => console.log(data))
