@@ -1,3 +1,5 @@
+const SIGNIN_ENDPOINT = 'https://platform.zone01.gr/api/auth/signin'
+
 export function renderLoginForm() {
   const loginView = document.getElementById('login-view');
 
@@ -34,7 +36,7 @@ export function loginHandler() {
     }
 }
 
-function handleLoginSubmit(event) {
+async function handleLoginSubmit(event) {
     event.preventDefault()
     const identifier = document.getElementById('identifier').value
     const password = document.getElementById('password').value
@@ -52,7 +54,7 @@ function resetLoginForm() {
 
 async function requestJWT(identifier, password) {
     const credentials = btoa(`${identifier}:${password}`);
-    const response = await fetch('url', {
+    const response = await fetch(SIGNIN_ENDPOINT, {
         method: 'POST',
         headers: {
             'Authorization': `Basic ${credentials}`
@@ -61,7 +63,7 @@ async function requestJWT(identifier, password) {
     if (!response.ok) {
         throw new Error('Invalid credentials')
     }
-    const token = await response.json
+    const token = await response.json()
     return token
 }
 
