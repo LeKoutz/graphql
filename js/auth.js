@@ -38,6 +38,11 @@ function handleLoginSubmit(event) {
     event.preventDefault()
     const identifier = document.getElementById('identifier').value
     const password = document.getElementById('password').value
+    try {
+        const token = await requestJWT(identifier, password)
+    } catch (err) {
+        showLoginError(err.message)
+    }
 }
 
 function resetLoginForm() {
@@ -53,8 +58,13 @@ async function requestJWT(identifier, password) {
         }
     })
     if (!response.ok) {
-        return
+        throw new Error('Invalid credentials')
     }
     const token = await response.json
     return token
+}
+
+function showLoginError(message) {
+    const errorMsg = document.getElementById('login-error')
+    errorMsg.textContent = message
 }
