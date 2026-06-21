@@ -2,7 +2,7 @@ import { getJWT } from "./auth.js";
 
 const GRAPHQL_ENDPOINT = 'https://platform.zone01.gr/api/graphql-engine/v1/graphql'
 
-async function sendQuery(query) {
+export async function sendQuery(query) {
   const token = getJWT()
 
   const response = await fetch(GRAPHQL_ENDPOINT, {
