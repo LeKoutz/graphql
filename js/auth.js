@@ -40,6 +40,7 @@ function handleLoginSubmit(event) {
     const password = document.getElementById('password').value
     try {
         const token = await requestJWT(identifier, password)
+        saveJWT(token)
     } catch (err) {
         showLoginError(err.message)
     }
@@ -67,4 +68,16 @@ async function requestJWT(identifier, password) {
 function showLoginError(message) {
     const errorMsg = document.getElementById('login-error')
     errorMsg.textContent = message
+}
+
+function saveJWT(token) {
+  sessionStorage.setItem('jwt', token);
+}
+
+function getJWT() {
+  return sessionStorage.getItem('jwt');
+}
+
+function clearJWT() {
+  sessionStorage.removeItem('jwt');
 }
