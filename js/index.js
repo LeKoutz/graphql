@@ -1,3 +1,4 @@
-import { renderLoginForm } from './auth.js'
+import { renderLoginForm, loginHandler } from './auth.js'
 
 renderLoginForm()
+loginHandler()

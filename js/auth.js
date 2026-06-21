@@ -26,3 +26,20 @@ export function renderLoginForm() {
   form.append(identifierInput, passwordInput, submitBtn, errorMsg);
   loginView.appendChild(form);
 }
+
+export function loginHandler() {
+    const form = document.getElementById('login-form')
+    if (form) {
+        form.addEventListener('submit', handleLoginSubmit)
+    }
+}
+
+function handleLoginSubmit(event) {
+    event.preventDefault()
+    const identifier = document.getElementById('identifier').value
+    const password = document.getElementById('password').value
+}
+
+function resetLoginForm() {
+  document.getElementById('login-form').reset();
+}
