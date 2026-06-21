@@ -76,7 +76,7 @@ function saveJWT(token) {
   sessionStorage.setItem('jwt', token);
 }
 
-function getJWT() {
+export function getJWT() {
   return sessionStorage.getItem('jwt');
 }
 
