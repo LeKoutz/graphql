@@ -1,3 +1,5 @@
+import { renderProfileView, showLoginView } from "./views.js";
+
 const SIGNIN_ENDPOINT = 'https://platform.zone01.gr/api/auth/signin'
 
 export function renderLoginForm() {
@@ -43,12 +45,13 @@ async function handleLoginSubmit(event) {
     try {
         const token = await requestJWT(identifier, password)
         saveJWT(token)
+        await renderProfileView()
     } catch (err) {
         showLoginError(err.message)
     }
 }
 
-function resetLoginForm() {
+export function resetLoginForm() {
   document.getElementById('login-form').reset();
 }
 
@@ -82,4 +85,10 @@ export function getJWT() {
 
 function clearJWT() {
   sessionStorage.removeItem('jwt');
+}
+
+export function logout() {
+  clearJWT()
+  document.getElementById('profile-view').innerHTML = ''
+  showLoginView()
 }
