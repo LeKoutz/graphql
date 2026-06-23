@@ -27,5 +27,6 @@ export function showLoginView() {
 
 export async function renderProfileView() {
   renderHeader()
+  await loadPersonalInfo()
   showProfileView()
 }
