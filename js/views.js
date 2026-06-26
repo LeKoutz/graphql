@@ -1,5 +1,6 @@
 import { resetLoginForm, logout } from './auth.js'
-import { loadPersonalInfo } from './profile.js'
+import { loadUserSections } from './user.js'
+import { loadLevel } from './transaction.js'
 
 function renderHeader() {
   const header = document.createElement('header')
@@ -34,6 +35,7 @@ export function showLoginView() {
 export async function renderProfileView() {
   renderHeader()
   renderContent()
-  await loadPersonalInfo()
+  await loadUserSections()
+  await loadLevel()
   showProfileView()
 }
