@@ -182,3 +182,31 @@ body {
 #personal-info-section p:last-child {
   border-bottom: none;
 }
+
+#audits-section h2 {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+#audits-section p {
+  font-size: 14px;
+  color: var(--text-muted);
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}
+
+#level-section p {
+  font-size: 14px;
+  color: var(--text-muted);
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}

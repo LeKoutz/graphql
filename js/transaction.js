@@ -17,7 +17,7 @@ function renderLevel(transaction) {
     const section = document.createElement('div');
     section.id = 'level-section';
 
-    const level = document.createElement('h3')
+    const level = document.createElement('p')
     level.textContent = `Level: ${transaction.amount}`
 
     section.append(level);
