@@ -6,7 +6,7 @@ async function fetchPersonalInfo() {
 }
 
 function renderPersonalInfo(user) {
-  const profileView = document.getElementById('profile-view');
+  const content = document.getElementById('profile-content');
 
   const section = document.createElement('div');
   section.id = 'personal-info-section';
@@ -27,7 +27,7 @@ function renderPersonalInfo(user) {
   campusEl.textContent = `Campus: ${user.campus}`;
 
   section.append(heading, loginEl, nameEl, emailEl, campusEl);
-  profileView.appendChild(section);
+  content.appendChild(section);
 }
 
 export async function loadPersonalInfo() {

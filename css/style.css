@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --bg:            #0a0a0a;
+  --surface:       #111111;
+  --border:        #1e1e1e;
+  --border-hover:  #2a2a2a;
+
+  --purple:        #9b5de5;
+  --purple-dim:    rgba(155, 93, 229, 0.08);
+  --purple-border: rgba(155, 93, 229, 0.25);
+
+  --teal:          #00f5d4;
+  --teal-dim:      rgba(0, 245, 212, 0.08);
+
+  --text:          #e8e8e8;
+  --text-muted:    #777777;
+  --text-dim:      #333333;
+
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius-card: 10px;
+  --radius-tag:  4px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+#login-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 32px;
+}
+
+#login-form input {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-tag);
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#login-form input:focus {
+  border-color: var(--purple);
+  color: var(--text);
+}
+
+#login-form input::placeholder {
+  color: var(--text);
+}
+
+#login-form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg) inset;
+  -webkit-text-fill-color: var(--text);
+  caret-color: var(--text);
+}
+
+#login-form button[type="submit"] {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--bg);
+  background: var(--purple);
+  border: none;
+  border-radius: var(--radius-tag);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  margin-top: 4px;
+}
+
+#login-form button[type="submit"]:hover {
+  opacity: 0.85;
+}
+
+#login-error {
+  font-size: 13px;
+  color: var(--teal);
+  min-height: 18px;
+  text-align: center;
+}
+
+#profile-view {
+  display: none;
+  min-height: 100vh;
+  padding: 0;
+}
+
+#profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 14px 24px;
+  border-bottom: 0.5px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#logout-btn {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-muted);
+  background: none;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-tag);
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+#logout-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+
+#profile-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+#personal-info-section h2 {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+#personal-info-section p {
+  font-size: 14px;
+  color: var(--text-muted);
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}
+
+#personal-info-section p:last-child {
+  border-bottom: none;
+}

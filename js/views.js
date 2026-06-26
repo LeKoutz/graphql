@@ -14,6 +14,12 @@ function renderHeader() {
   document.getElementById('profile-view').appendChild(header)
 }
 
+function renderContent() {
+  const content = document.createElement('div')
+  content.id = 'profile-content'
+  document.getElementById('profile-view').appendChild(content)
+}
+
 export function showProfileView() {
   document.getElementById('login-view').style.display = 'none'
   document.getElementById('profile-view').style.display = 'block'
@@ -22,11 +28,12 @@ export function showProfileView() {
 
 export function showLoginView() {
   document.getElementById('profile-view').style.display = 'none'
-  document.getElementById('login-view').style.display = 'block'
+  document.getElementById('login-view').style.display = 'flex'
 }
 
 export async function renderProfileView() {
   renderHeader()
+  renderContent()
   await loadPersonalInfo()
   showProfileView()
 }
