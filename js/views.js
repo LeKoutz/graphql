@@ -1,23 +1,32 @@
 import { logout } from './auth.js'
 import { fetchUser } from './user.js'
 
-export async function renderProfileDashboard() {
-  const content = document.querySelector('#content')
-  content.innerHTML = ''
+export async function enterProfile() {
   const user = await fetchUser();
-  renderTopBar();
-
-  const welcome = document.createElement('h2')
-  welcome.id = 'welcome'
-  welcome.textContent = `Welcome ${user.login}`
-
-  const auditSection = document.createElement('div')
-  auditSection.id = 'audit-section'
-
-  content.append(welcome)
+  renderProfileDashboard(user);
 }
 
-function renderTopBar(user) {
+function renderProfileDashboard(user) {
+  const content = document.querySelector('#content')
+  content.innerHTML = ''
+  renderTopBar();
+
+  const welcomeSection = document.createElement('div')
+  welcomeSection.id = 'welcome-section'
+  const welcome = document.createElement('h2')
+  welcome.textContent = `Welcome ${user.login}`
+  welcomeSection.append(welcome)
+
+  const auditsSection = document.createElement('div')
+  auditsSection.id = 'audit-section'
+
+  const progressSection = document.createElement('div')
+  progressSection.id = 'progress-section'
+
+  content.append(welcomeSection, auditsSection, progressSection)
+}
+
+function renderTopBar() {
   const info = document.createElement('button')
   info.classList.add('topBar-btn')
   info.textContent = 'Info'

@@ -1,4 +1,4 @@
-import { renderProfileDashboard } from "./views.js";
+import { enterProfile } from "./views.js";
 
 const SIGNIN_ENDPOINT = 'https://platform.zone01.gr/api/auth/signin'
 
@@ -48,7 +48,7 @@ async function handleLoginSubmit(event) {
     try {
         const token = await requestJWT(identifier, password)
         saveJWT(token)
-        await renderProfileDashboard()
+        await enterProfile();
     } catch (err) {
         showLoginError(err.message)
     }
