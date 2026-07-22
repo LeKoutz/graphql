@@ -1,37 +1,40 @@
-import { renderProfileView, showLoginView } from "./views.js";
+import { renderProfileDashboard } from "./views.js";
 
 const SIGNIN_ENDPOINT = 'https://platform.zone01.gr/api/auth/signin'
 
-export function renderLoginForm() {
-  const loginView = document.getElementById('login-view');
+function renderLoginForm() {
+    const container = document.createElement('div');
+    container.id = 'login-container'
 
-  const form = document.createElement('form');
-  form.id = 'login-form';
+    const form = document.createElement('form');
+    form.id = 'login-form';
 
-  const identifierInput = document.createElement('input');
-  identifierInput.type = 'text';
-  identifierInput.id = 'identifier';
-  identifierInput.placeholder = 'Username or Email';
-  identifierInput.required = true;
+    const identifierInput = document.createElement('input');
+    identifierInput.type = 'text';
+    identifierInput.id = 'identifier';
+    identifierInput.placeholder = 'Username or Email';
+    identifierInput.required = true;
 
-  const passwordInput = document.createElement('input');
-  passwordInput.type = 'password';
-  passwordInput.id = 'password';
-  passwordInput.placeholder = 'Password';
-  passwordInput.required = true;
+    const passwordInput = document.createElement('input');
+    passwordInput.type = 'password';
+    passwordInput.id = 'password';
+    passwordInput.placeholder = 'Password';
+    passwordInput.required = true;
 
-  const submitBtn = document.createElement('button');
-  submitBtn.type = 'submit';
-  submitBtn.textContent = 'Log in';
+    const submitBtn = document.createElement('button');
+    submitBtn.type = 'submit';
+    submitBtn.textContent = 'Log in';
 
-  const errorMsg = document.createElement('p');
-  errorMsg.id = 'login-error';
+    const errorMsg = document.createElement('p');
+    errorMsg.id = 'login-error';
 
-  form.append(identifierInput, passwordInput, submitBtn, errorMsg);
-  loginView.appendChild(form);
+    form.append(identifierInput, passwordInput, submitBtn, errorMsg);
+    container.append(form)
+    document.querySelector('#content').appendChild(container);
 }
 
 export function loginHandler() {
+    renderLoginForm();
     const form = document.getElementById('login-form')
     if (form) {
         form.addEventListener('submit', handleLoginSubmit)
@@ -45,14 +48,14 @@ async function handleLoginSubmit(event) {
     try {
         const token = await requestJWT(identifier, password)
         saveJWT(token)
-        await renderProfileView()
+        await renderProfileDashboard()
     } catch (err) {
         showLoginError(err.message)
     }
 }
 
 export function resetLoginForm() {
-  document.getElementById('login-form').reset();
+    document.getElementById('login-form').reset();
 }
 
 async function requestJWT(identifier, password) {
@@ -76,19 +79,20 @@ function showLoginError(message) {
 }
 
 function saveJWT(token) {
-  sessionStorage.setItem('jwt', token);
+    sessionStorage.setItem('jwt', token);
 }
 
 export function getJWT() {
-  return sessionStorage.getItem('jwt');
+    return sessionStorage.getItem('jwt');
 }
 
 function clearJWT() {
-  sessionStorage.removeItem('jwt');
+    sessionStorage.removeItem('jwt');
 }
 
 export function logout() {
-  clearJWT()
-  document.getElementById('profile-view').innerHTML = ''
-  showLoginView()
+    clearJWT()
+    document.querySelector('#content').innerHTML = ''
+    document.querySelector('#topBar').innerHTML = ''
+    loginHandler()
 }

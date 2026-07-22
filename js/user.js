@@ -1,7 +1,7 @@
 import { sendQuery } from './api.js' 
 
 
-async function fetchUser() {
+export async function fetchUser() {
   const data = await sendQuery(`{
     user {
       login firstName lastName email campus auditRatio totalUp totalDown
@@ -11,7 +11,7 @@ async function fetchUser() {
 }
 
 function renderPersonalInfo(user) {
-  const content = document.getElementById('profile-content');
+  const content = document.querySelector('#content');
 
   const section = document.createElement('div');
   section.id = 'personal-info-section';
@@ -36,7 +36,7 @@ function renderPersonalInfo(user) {
 }
 
 function renderAuditRatio(user) {
-  const content = document.getElementById('profile-content')
+  const content = document.querySelector('#content')
 
   const section = document.createElement('div')
   section.id = 'audits-section'

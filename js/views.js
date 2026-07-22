@@ -1,41 +1,39 @@
-import { resetLoginForm, logout } from './auth.js'
-import { loadUserSections } from './user.js'
-import { loadLevel } from './transaction.js'
+import { logout } from './auth.js'
+import { fetchUser } from './user.js'
 
-function renderHeader() {
-  const header = document.createElement('header')
-  header.id = 'profile-header'
+export async function renderProfileDashboard() {
+  const content = document.querySelector('#content')
+  content.innerHTML = ''
+  const user = await fetchUser();
+  renderTopBar();
+
+  const welcome = document.createElement('h2')
+  welcome.id = 'welcome'
+  welcome.textContent = `Welcome ${user.login}`
+
+  const auditSection = document.createElement('div')
+  auditSection.id = 'audit-section'
+
+  content.append(welcome)
+}
+
+function renderTopBar(user) {
+  const info = document.createElement('button')
+  info.classList.add('topBar-btn')
+  info.textContent = 'Info'
+
+  const audits = document.createElement('button')
+  audits.classList.add('topBar-btn')
+  audits.textContent = 'Audits'
+
+  const progress = document.createElement('button')
+  progress.classList.add('topBar-btn')
+  progress.textContent = 'Progress'
 
   const logoutBtn = document.createElement('button')
+  logoutBtn.classList.add('topBar-btn')
   logoutBtn.textContent = 'Log out'
-  logoutBtn.id = 'logout-btn'
   logoutBtn.addEventListener('click', logout)
 
-  header.appendChild(logoutBtn)
-  document.getElementById('profile-view').appendChild(header)
-}
-
-function renderContent() {
-  const content = document.createElement('div')
-  content.id = 'profile-content'
-  document.getElementById('profile-view').appendChild(content)
-}
-
-export function showProfileView() {
-  document.getElementById('login-view').style.display = 'none'
-  document.getElementById('profile-view').style.display = 'block'
-  resetLoginForm()
-}
-
-export function showLoginView() {
-  document.getElementById('profile-view').style.display = 'none'
-  document.getElementById('login-view').style.display = 'flex'
-}
-
-export async function renderProfileView() {
-  renderHeader()
-  renderContent()
-  await loadUserSections()
-  await loadLevel()
-  showProfileView()
+  document.querySelector('#topBar').append(info, audits, progress, logoutBtn)
 }

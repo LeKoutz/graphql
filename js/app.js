@@ -1,6 +1,16 @@
-import { renderLoginForm, loginHandler } from './auth.js'
-import { showLoginView } from './views.js'
+import { loginHandler } from './auth.js'
 
-showLoginView()
-renderLoginForm()
-loginHandler()
+function buildDOM() {
+    const topBar = document.createElement('nav')
+    topBar.id = 'topBar'
+
+    const content = document.createElement('main')
+    content.id = 'content'
+
+    const footer = document.createElement('footer')
+    footer.id = 'footer'
+    document.body.append(topBar, content, footer)
+}
+
+buildDOM();
+loginHandler();
