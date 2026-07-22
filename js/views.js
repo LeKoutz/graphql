@@ -1,5 +1,5 @@
 import { logout } from './auth.js'
-import { fetchUser } from './user.js'
+import { fetchUser, createPersonalInfoSection, createAuditRatioSection } from './user.js'
 
 export async function enterProfile() {
   const user = await fetchUser();
@@ -11,11 +11,20 @@ function renderProfileDashboard(user) {
   content.innerHTML = ''
   renderTopBar();
 
+  content.append(
+    createPersonalInfoSection(user),
+    createAuditRatioSection(user)
+  )
+  /*
   const welcomeSection = document.createElement('div')
   welcomeSection.id = 'welcome-section'
   const welcome = document.createElement('h2')
   welcome.textContent = `Welcome ${user.login}`
   welcomeSection.append(welcome)
+
+  const infoSection = document.createElement('div')
+  infoSection.id = 'personal-info-section'
+  renderPersonalInfo(user);
 
   const auditsSection = document.createElement('div')
   auditsSection.id = 'audit-section'
@@ -23,7 +32,8 @@ function renderProfileDashboard(user) {
   const progressSection = document.createElement('div')
   progressSection.id = 'progress-section'
 
-  content.append(welcomeSection, auditsSection, progressSection)
+  content.append(welcomeSection, infoSection, auditsSection, progressSection)
+  */
 }
 
 function renderTopBar() {

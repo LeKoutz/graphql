@@ -10,9 +10,7 @@ export async function fetchUser() {
   return data.user[0]
 }
 
-function renderPersonalInfo(user) {
-  const content = document.querySelector('#content');
-
+export function createPersonalInfoSection(user) {
   const section = document.createElement('div');
   section.id = 'personal-info-section';
 
@@ -32,12 +30,10 @@ function renderPersonalInfo(user) {
   campusEl.textContent = `Campus: ${user.campus}`;
 
   section.append(heading, loginEl, nameEl, emailEl, campusEl);
-  content.appendChild(section);
+  return section;
 }
 
-function renderAuditRatio(user) {
-  const content = document.querySelector('#content')
-
+export function createAuditRatioSection(user) {
   const section = document.createElement('div')
   section.id = 'audits-section'
 
@@ -67,7 +63,7 @@ function renderAuditRatio(user) {
   downEl.append(downLabel, downValue)
 
   section.append(heading, ratioEl, upEl, downEl)
-  content.appendChild(section)
+  return section;
 }
 
 export async function loadUserSections() {
