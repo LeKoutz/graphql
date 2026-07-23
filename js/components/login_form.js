@@ -25,10 +25,7 @@ export function createLoginForm() {
     submitBtn.type = 'submit';
     submitBtn.textContent = 'Log in';
 
-    const errorMsg = document.createElement('p');
-    errorMsg.id = 'login-error';
-
-    form.append(identifierInput, passwordInput, submitBtn, errorMsg);
+    form.append(identifierInput, passwordInput, submitBtn);
     container.append(form);
     form.addEventListener('submit', handleLoginSubmit);
     return container;
