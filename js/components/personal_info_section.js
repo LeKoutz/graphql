@@ -1,13 +1,4 @@
-import { sendQuery } from './api.js' 
-
-async function fetchPersonalInfo() {
-  const data = await sendQuery('{ user { login firstName lastName email campus } }');
-  return data.user[0];
-}
-
-function renderPersonalInfo(user) {
-  const content = document.getElementById('profile-content');
-
+export function createPersonalInfoSection(user) {
   const section = document.createElement('div');
   section.id = 'personal-info-section';
 
@@ -27,10 +18,5 @@ function renderPersonalInfo(user) {
   campusEl.textContent = `Campus: ${user.campus}`;
 
   section.append(heading, loginEl, nameEl, emailEl, campusEl);
-  content.appendChild(section);
-}
-
-export async function loadPersonalInfo() {
-  const user = await fetchPersonalInfo();
-  renderPersonalInfo(user);
+  return section;
 }

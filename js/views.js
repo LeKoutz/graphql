@@ -1,39 +1,40 @@
-import { resetLoginForm, logout } from './auth.js'
-import { loadPersonalInfo } from './profile.js'
+import { fetchUser } from './api/api.user.js'
+import { createLoginForm } from './components/login_form.js'
+import { clearJWT } from './auth.js'
+import { createTopBar } from './components/topbar.js'
+import { createPersonalInfoSection } from'./components/personal_info_section.js'
+import { createAuditRatioSection } from './components/audits_section.js'
 
-function renderHeader() {
-  const header = document.createElement('header')
-  header.id = 'profile-header'
-
-  const logoutBtn = document.createElement('button')
-  logoutBtn.textContent = 'Log out'
-  logoutBtn.id = 'logout-btn'
-  logoutBtn.addEventListener('click', logout)
-
-  header.appendChild(logoutBtn)
-  document.getElementById('profile-view').appendChild(header)
+export async function enterProfile() {
+  const user = await fetchUser();
+  renderProfileDashboard(user);
 }
 
-function renderContent() {
-  const content = document.createElement('div')
-  content.id = 'profile-content'
-  document.getElementById('profile-view').appendChild(content)
+function renderProfileDashboard(user) {
+  document.body.innerHTML = ''
+
+  document.body.append(
+    createTopBar(user),
+    createPersonalInfoSection(user),
+    createAuditRatioSection(user),
+  )
+  /*
+  const infoSection = document.createElement('div')
+  infoSection.id = 'personal-info-section'
+  renderPersonalInfo(user);
+
+  const auditsSection = document.createElement('div')
+  auditsSection.id = 'audit-section'
+
+  const progressSection = document.createElement('div')
+  progressSection.id = 'progress-section'
+
+  content.append(welcomeSection, infoSection, auditsSection, progressSection)
+  */
 }
 
-export function showProfileView() {
-  document.getElementById('login-view').style.display = 'none'
-  document.getElementById('profile-view').style.display = 'block'
-  resetLoginForm()
-}
-
-export function showLoginView() {
-  document.getElementById('profile-view').style.display = 'none'
-  document.getElementById('login-view').style.display = 'flex'
-}
-
-export async function renderProfileView() {
-  renderHeader()
-  renderContent()
-  await loadPersonalInfo()
-  showProfileView()
+export function logout() {
+    clearJWT()
+    document.body.innerHTML = ''
+    document.body.append(createLoginForm());
 }
