@@ -164,7 +164,7 @@ nav {
   padding: 20px;
 }
 
-#personal-info-section {
+.section {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
@@ -191,12 +191,6 @@ nav {
 
 #personal-info-section p:last-child {
   border-bottom: none;
-}
-
-#audits-section {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 #audits-section h2 {

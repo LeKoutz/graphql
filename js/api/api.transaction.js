@@ -1,6 +1,6 @@
 import { sendQuery } from './api.js';
 
-async function fetchLevel() {
+export async function fetchLevel() {
     const data = await sendQuery(`{
         transaction(
         where: { type: { _eq: "level" } }

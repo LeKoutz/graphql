@@ -1,6 +1,7 @@
 export function createPersonalInfoSection(user) {
     const section = document.createElement('div');
     section.id = 'personal-info-section';
+    section.classList.add('section');
 
     const heading = document.createElement('h2');
     heading.textContent = 'Personal Info';
