@@ -46,6 +46,7 @@ nav {
   gap: 50px;
   justify-content: flex-end;
   padding: 20px;
+  align-items: baseline;
 }
 
 #login-container {
@@ -146,7 +147,7 @@ nav {
   background: none;
   border: 0.5px solid var(--border);
   border-radius: var(--radius-tag);
-  padding: 6px 14px;
+  padding: 15px;
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
 }
@@ -161,7 +162,7 @@ nav {
   font-weight: 500;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
-  padding: 20px;
+  padding: 15px;
 }
 
 #dashboard-grid {
@@ -175,7 +176,7 @@ nav {
   padding-right: 20px;
 }
 
-#personal-info-section h2 {
+.section h2 {
   font-size: 11px;
   font-family: var(--font-mono);
   font-weight: 500;
@@ -185,7 +186,7 @@ nav {
   margin-bottom: 16px;
 }
 
-#personal-info-section p {
+.section p {
   font-size: 14px;
   color: var(--text-muted);
   padding: 10px 0;
@@ -196,34 +197,6 @@ nav {
 
 #personal-info-section p:last-child {
   border-bottom: none;
-}
-
-#audits-section h2 {
-  font-size: 11px;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-  margin-bottom: 16px;
-}
-
-#audits-section p {
-  font-size: 14px;
-  color: var(--text-muted);
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-}
-
-#level-section p {
-  font-size: 14px;
-  color: var(--text-muted);
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--border);
-  display: flex;
-  justify-content: space-between;
 }
 
 .gauge-bg {

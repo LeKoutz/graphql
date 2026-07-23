@@ -5,7 +5,7 @@ import { clearJWT } from './auth.js';
 import { createTopBar } from './components/topbar.js';
 import { createPersonalInfoSection } from'./components/personal_info_section.js';
 import { createAuditRatioSection } from './components/audits_section.js';
-import { createLevelSection } from './components/level_section.js';
+import { createProgressSection } from './components/progress_section.js';
 import { createErrorAlert } from './components/error_alert.js';
 import { createAuditRatioGauge } from './graphs/audit_ratio_gauge.js';
 
@@ -27,7 +27,7 @@ function renderProfileDashboard(user, level) {
     grid.append(
         createPersonalInfoSection(user),
         createAuditRatioSection(user),
-        createLevelSection(level)
+        createProgressSection(level)
     );
 
     document.body.append(
