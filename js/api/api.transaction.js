@@ -1,4 +1,4 @@
-import { sendQuery } from './api.js' 
+import { sendQuery } from './api.js';
 
 async function fetchLevel() {
     const data = await sendQuery(`{
@@ -7,6 +7,6 @@ async function fetchLevel() {
         order_by: { createdAt: desc }
         limit: 1
         ) { amount }
-    }`)
-    return data.transaction[0]
+    }`);
+    return data.transaction[0];
 }

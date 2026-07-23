@@ -1,11 +1,11 @@
-import { logout } from '../views.js'
+import { logout } from '../views.js';
 
 export function createTopBar(user) {
-    const topBar = document.createElement('nav')
-    topBar.id = 'topBar'
+    const topBar = document.createElement('nav');
+    topBar.id = 'topBar';
 
-    const welcome = document.createElement('h2')
-    welcome.textContent = `Welcome, ${user.login}`
+    const welcome = document.createElement('h2');
+    welcome.textContent = `Welcome, ${user.login}`;
 
     /*const info = document.createElement('button')
     info.classList.add('topBar-btn')
@@ -19,11 +19,11 @@ export function createTopBar(user) {
     progress.classList.add('topBar-btn')
     progress.textContent = 'Progress'*/
 
-    const logoutBtn = document.createElement('button')
-    logoutBtn.classList.add('topBar-btn')
-    logoutBtn.textContent = 'Log out'
-    logoutBtn.addEventListener('click', logout)
+    const logoutBtn = document.createElement('button');
+    logoutBtn.classList.add('topBar-btn');
+    logoutBtn.textContent = 'Log out';
+    logoutBtn.addEventListener('click', logout);
 
-    topBar.append(welcome, logoutBtn)
+    topBar.append(welcome, logoutBtn);
     return topBar;
 }

@@ -4,7 +4,7 @@ import { enterProfile } from "../views.js";
 
 export function createLoginForm() {
     const container = document.createElement('div');
-    container.id = 'login-container'
+    container.id = 'login-container';
 
     const form = document.createElement('form');
     form.id = 'login-form';
@@ -29,18 +29,18 @@ export function createLoginForm() {
     errorMsg.id = 'login-error';
 
     form.append(identifierInput, passwordInput, submitBtn, errorMsg);
-    container.append(form)
-    form.addEventListener('submit', handleLoginSubmit)
-    return container
+    container.append(form);
+    form.addEventListener('submit', handleLoginSubmit);
+    return container;
 }
 
 async function handleLoginSubmit(event) {
-    event.preventDefault()
-    const identifier = document.getElementById('identifier').value
-    const password = document.getElementById('password').value
+    event.preventDefault();
+    const identifier = document.getElementById('identifier').value;
+    const password = document.getElementById('password').value;
     try {
-        const token = await requestJWT(identifier, password)
-        saveJWT(token)
+        const token = await requestJWT(identifier, password);
+        saveJWT(token);
         await enterProfile();
     } catch (err) {
         document.body.prepend(createErrorAlert(err.message));

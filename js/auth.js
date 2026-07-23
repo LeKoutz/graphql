@@ -1,4 +1,4 @@
-const SIGNIN_ENDPOINT = 'https://platform.zone01.gr/api/auth/signin'
+const SIGNIN_ENDPOINT = 'https://platform.zone01.gr/api/auth/signin';
 
 export async function requestJWT(identifier, password) {
     const credentials = btoa(`${identifier}:${password}`);
@@ -7,12 +7,12 @@ export async function requestJWT(identifier, password) {
         headers: {
             'Authorization': `Basic ${credentials}`
         }
-    })
+    });
     if (!response.ok) {
-        throw new Error('Invalid credentials')
+        throw new Error('Invalid credentials');
     }
-    const token = await response.json()
-    return token
+    const token = await response.json();
+    return token;
 }
 
 export function saveJWT(token) {
