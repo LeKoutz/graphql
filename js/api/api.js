@@ -15,5 +15,6 @@ export async function sendQuery(query) {
     });
 
     const result = await response.json();
-    return result.errors || result.data;
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data;
 }

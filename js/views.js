@@ -6,11 +6,16 @@ import { createTopBar } from './components/topbar.js';
 import { createPersonalInfoSection } from'./components/personal_info_section.js';
 import { createAuditRatioSection } from './components/audits_section.js';
 import { createLevelSection } from './components/level_section.js';
+import { createErrorAlert } from './components/error_alert.js';
 
 export async function enterProfile() {
-    const user = await fetchUser();
-    const level = await fetchLevel();
-    renderProfileDashboard(user, level);
+    try {
+        const user = await fetchUser();
+        const level = await fetchLevel();
+        renderProfileDashboard(user, level);
+    } catch (err) {
+        document.body.prepend(createErrorAlert(err.message));
+    }
 }
 
 function renderProfileDashboard(user, level) {
