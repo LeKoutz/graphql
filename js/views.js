@@ -7,6 +7,7 @@ import { createPersonalInfoSection } from'./components/personal_info_section.js'
 import { createAuditRatioSection } from './components/audits_section.js';
 import { createLevelSection } from './components/level_section.js';
 import { createErrorAlert } from './components/error_alert.js';
+import { createAuditRatioGauge } from './graphs/audit_ratio_gauge.js';
 
 export async function enterProfile() {
     try {
@@ -21,11 +22,21 @@ export async function enterProfile() {
 function renderProfileDashboard(user, level) {
     document.body.innerHTML = '';
 
-    document.body.append(
-        createTopBar(user),
+    const grid = document.createElement('div');
+    grid.id = 'dashboard-grid';
+    grid.append(
         createPersonalInfoSection(user),
         createAuditRatioSection(user),
         createLevelSection(level)
+    );
+
+    document.body.append(
+        createTopBar(user),
+        grid
+    );
+
+    document.querySelector('#audits-section').append(
+        createAuditRatioGauge(user)
     );
 }
 

@@ -164,6 +164,11 @@ nav {
   padding: 20px;
 }
 
+#dashboard-grid {
+  display: grid;
+  grid-auto-flow: column;
+}
+
 .section {
   padding-top: 30px;
   padding-left: 20px;
@@ -220,3 +225,32 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+
+.gauge-bg {
+    fill: none;
+    stroke: var(--border-hover);
+    stroke-width: 16;
+    stroke-linecap: round;
+}
+
+.gauge-fill {
+    fill: none;
+    stroke: var(--purple);
+    stroke-width: 16;
+    stroke-linecap: round;
+}
+
+.gauge-value {
+    font-family: var(--font-sans);
+    font-size: 32px;
+    font-weight: 500;
+    fill: var(--text);
+}
+
+.gauge-fill.gauge-value--green  { stroke: #00c48c; fill: none; }
+.gauge-fill.gauge-value--orange { stroke: #f59e0b; fill: none; }
+.gauge-fill.gauge-value--red    { stroke: #ef4444; fill: none; }
+
+.gauge-value--green  { fill: #00c48c; }
+.gauge-value--orange { fill: #f59e0b; }
+.gauge-value--red    { fill: #ef4444; }
