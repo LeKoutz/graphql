@@ -227,3 +227,24 @@ nav {
 .gauge-value--green  { fill: #00c48c; }
 .gauge-value--orange { fill: #f59e0b; }
 .gauge-value--red    { fill: #ef4444; }
+
+.chart-axis {
+    stroke: var(--border-hover);
+    stroke-width: 1;
+}
+
+.step-path {
+    fill: none;
+    stroke: var(--purple);
+    stroke-width: 2;
+}
+
+.step-dot {
+    fill: var(--purple);
+}
+
+.chart-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    fill: var(--text-muted);
+}
