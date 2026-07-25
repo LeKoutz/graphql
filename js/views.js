@@ -1,5 +1,5 @@
 import { fetchUser } from './api/api.user.js';
-import { fetchLevelHistory } from './api/api.transaction.js';
+import { fetchLevelHistory, fetchXPHistory  } from './api/api.transaction.js';
 import { createLoginForm } from './components/login_form.js';
 import { clearJWT } from './auth.js';
 import { createTopBar } from './components/topbar.js';
@@ -9,18 +9,20 @@ import { createProgressSection } from './components/progress_section.js';
 import { createErrorAlert } from './components/error_alert.js';
 import { createAuditRatioGauge } from './graphs/audit_ratio_gauge.js';
 import { createLevelStepChart } from './graphs/progress_step_chart.js';
+import { createProjectCountBarChart } from './graphs/project_per_month_bar_chart.js';
 
 export async function enterProfile() {
     try {
         const user = await fetchUser();
         const levelHistory = await fetchLevelHistory();
-        renderProfileDashboard(user, levelHistory);
+        const xpHistory = await fetchXPHistory();
+        renderProfileDashboard(user, levelHistory, xpHistory);
     } catch (err) {
         document.body.prepend(createErrorAlert(err.message));
     }
 }
 
-function renderProfileDashboard(user, levelHistory) {
+function renderProfileDashboard(user, levelHistory, xpHistory) {
     document.body.innerHTML = '';
 
     const grid = document.createElement('div');
@@ -41,7 +43,8 @@ function renderProfileDashboard(user, levelHistory) {
     );
 
     document.querySelector('#progress-section').append(
-        createLevelStepChart(levelHistory)
+        createLevelStepChart(levelHistory),
+        createProjectCountBarChart(xpHistory)
     );
 }
 

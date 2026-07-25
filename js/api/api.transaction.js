@@ -16,3 +16,21 @@ export async function fetchLevelHistory() {
     }`);
     return data.transaction;
 }
+
+export async function fetchXPHistory() {
+    const data = await sendQuery(`{
+        transaction(
+            where: {
+                type: { _eq: "xp" }
+                path: { _like: "%/div-01/%" }
+                _not: { path: { _like: "%/piscine-%/%" } }
+            }
+            order_by: { createdAt: asc }
+        ) {
+            amount
+            createdAt
+            path
+        }
+    }`);
+    return data.transaction;
+}

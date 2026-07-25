@@ -248,3 +248,12 @@ nav {
     font-size: 11px;
     fill: var(--text-muted);
 }
+
+.chart-bar {
+    fill: var(--purple);
+    opacity: 0.85;
+}
+
+.chart-bar:hover {
+    opacity: 1;
+}
