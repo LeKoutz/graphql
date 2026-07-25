@@ -10,6 +10,7 @@ import { createErrorAlert } from './components/error_alert.js';
 import { createAuditRatioGauge } from './graphs/audit_ratio_gauge.js';
 import { createLevelStepChart } from './graphs/progress_step_chart.js';
 import { createProjectCountBarChart } from './graphs/project_per_month_bar_chart.js';
+import { createLevelTimelineChart } from './graphs/level_timeline_chart.js';
 
 export async function enterProfile() {
     try {
@@ -30,7 +31,7 @@ function renderProfileDashboard(user, levelHistory, xpHistory) {
     grid.append(
         createPersonalInfoSection(user),
         createAuditRatioSection(user),
-        createProgressSection(levelHistory)
+        createProgressSection()
     );
 
     document.body.append(
@@ -43,6 +44,7 @@ function renderProfileDashboard(user, levelHistory, xpHistory) {
     );
 
     document.querySelector('#progress-section').append(
+        createLevelTimelineChart(levelHistory),
         createLevelStepChart(levelHistory),
         createProjectCountBarChart(xpHistory)
     );

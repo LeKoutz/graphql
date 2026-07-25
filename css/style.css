@@ -257,3 +257,26 @@ nav {
 .chart-bar:hover {
     opacity: 1;
 }
+
+.timeline-track {
+    stroke: var(--border-hover);
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.timeline-fill {
+    stroke: var(--purple);
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.timeline-dot {
+    fill: var(--purple);
+}
+
+.timeline-value {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 500;
+    fill: var(--text);
+}
