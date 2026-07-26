@@ -150,6 +150,7 @@ nav {
   padding: 15px;
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
+  text-decoration: none;
 }
 
 .topBar-btn:hover {
