@@ -168,8 +168,17 @@ nav {
 
 #dashboard-grid {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "milestones   milestones"
+    "info         progress"
+    "audits       progress";
 }
+
+#personal-info-section { grid-area: info; }
+#audits-section        { grid-area: audits; }
+#progress-section      { grid-area: progress; }
+#milestones-section    { grid-area: milestones; }
 
 .section {
   padding-top: 30px;
@@ -281,3 +290,38 @@ nav {
     font-weight: 500;
     fill: var(--text);
 }
+
+#piscine-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.piscine-card {
+    flex: 1;
+    min-width: 180px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.piscine-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.piscine-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+p[data-status="piscine-status--succeeded"] { color: #00c48c;}
+p[data-status="piscine-status--failed"] { color: #ef4444;}
+p[data-status="piscine-status--awaiting-selection"] { color: #f59e0b;}
+p[data-status="piscine-status--starting-soon"] { color: var(--text-muted);}
