@@ -26,15 +26,29 @@ export function createPiscineCards(events) {
 
         const status = getPiscineStatus(event);
         const statusEl = document.createElement('p');
+        statusEl.dataset.style = "divider"
         statusEl.dataset.status = `piscine-status--${status.toLowerCase().replace(' ', '-')}`;
         statusEl.textContent = status;
 
-        const detailEl = document.createElement('p');
+        const detailEl = document.createElement('div');
+        detailEl.classList.add('piscine-card-details')
+        detailEl.dataset.style = "divider"
 
-        const date = document.createElement('span');
-        date.textContent = formatDate(event.endAt);
+        const start = document.createElement('div');
+        const startHeading = document.createElement('h4');
+        startHeading.textContent = 'Start';
+        const dateStart = document.createElement('p');
+        dateStart.textContent = formatDate(event.startAt);
+        start.append(startHeading, dateStart);
 
-        detailEl.append(date);
+        const end = document.createElement('div');
+        const endHeading = document.createElement('h4');
+        endHeading.textContent = 'End';
+        const dateEnd = document.createElement('p');
+        dateEnd.textContent = formatDate(event.endAt);
+        end.append(endHeading, dateEnd);
+
+        detailEl.append(start, end);
         card.append(name, statusEl, detailEl);
         cards.append(card);
     });

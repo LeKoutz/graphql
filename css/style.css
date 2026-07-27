@@ -231,11 +231,17 @@ nav {
   margin-bottom: 16px;
 }
 
+.section h4 {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
 .section p {
   font-size: 14px;
   color: var(--text-muted);
   padding: 10px 0;
-  border-bottom: 0.5px solid var(--border);
   display: flex;
   justify-content: space-between;
 }
@@ -356,7 +362,16 @@ nav {
     color: var(--text-muted);
 }
 
+.piscine-card-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 0.5px solid var(--border);
+}
+
 p[data-status="piscine-status--succeeded"] { color: #00c48c;}
 p[data-status="piscine-status--failed"] { color: #ef4444;}
 p[data-status="piscine-status--awaiting-selection"] { color: #f59e0b;}
 p[data-status="piscine-status--starting-soon"] { color: var(--text-muted);}
+
+[data-style="divider"] { border-bottom: 0.5px solid var(--border); }
